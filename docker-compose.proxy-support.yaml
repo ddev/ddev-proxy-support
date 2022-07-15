@@ -1,0 +1,11 @@
+#ddev-generated
+version: '3.6'
+
+services:
+  web:
+    build:
+      args:
+        - HTTP_PROXY=${HTTP_PROXY}
+        - HTTPS_PROXY=${HTTPS_PROXY}
+        - NO_PROXY=${NO_PROXY}
+        - http_proxy=${http_proxy}
