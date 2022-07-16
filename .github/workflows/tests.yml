@@ -51,6 +51,7 @@ jobs:
       run: |
         brew install bats-core mkcert
         mkcert -install
+        sudo apt-get update >/dev/null && sudo apt-get install -y tinyproxy >/dev/null
         # Tinyproxy will listen by default on all interfaces, port 8888
         sudo service tinyproxy start
 
