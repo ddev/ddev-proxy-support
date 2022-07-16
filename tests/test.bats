@@ -7,6 +7,8 @@ setup() {
   # a public proxy listed at https://spys.one/en/free-proxy-list/
   # This may not be reliable.
   export TEST_PROXY_URL=${TEST_PROXY_URL:-http://67.212.186.101:80}
+  echo "# Using TEST_PROXY_URL=${TEST_PROXY_URL}" >&3
+
   mkdir -p $TESTDIR
   export PROJNAME=test-proxy-support
   export DDEV_NON_INTERACTIVE=true
