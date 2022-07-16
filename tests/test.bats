@@ -3,9 +3,10 @@ setup() {
   unset HTTP_PROXY HTTPS_PROXY http_proxy NO_PROXY
   export DIR="$( cd "$( dirname "$BATS_TEST_FILENAME" )" >/dev/null 2>&1 && pwd )/.."
   export TESTDIR=~/tmp/testproxysupport
-  # Test proxy from random public proxies listed at https://spys.one/en/free-proxy-list/
-  # This may not be reliable, don't know.
-  export TESTPROXY=http://67.212.186.101:80
+  # Test proxy will normally come from TEST_PROXY_URL secret in github repo, but defaults to
+  # a public proxy listed at https://spys.one/en/free-proxy-list/
+  # This may not be reliable.
+  export TEST_PROXY_URL=${TEST_PROXY_URL:-http://67.212.186.101:80}
   mkdir -p $TESTDIR
   export PROJNAME=test-proxy-support
   export DDEV_NON_INTERACTIVE=true
@@ -30,14 +31,14 @@ teardown() {
   ddev get ${DIR}
   ddev debug refresh
   ddev start
-  export HTTP_PROXY=${TESTPROXY}
+  export HTTP_PROXY=${TEST_PROXY_URL}
   export http_proxy=${HTTP_PROXY}
-#  export HTTPS_PROXY=${TESTPROXY}
-  export NO_PROXY=127.0.0.1
+#  export HTTPS_PROXY=${TEST_PROXY_URL}
+#  export NO_PROXY=127.0.0.1
   # Make sure that we can install extra packages using the proxy
   ddev config --webimage-extra-packages=autojump
   ddev start
-  ddev exec "echo \${HTTP_PROXY} | grep ${TESTPROXY}"
+  ddev exec "echo \${HTTP_PROXY} | grep ${TEST_PROXY_URL}"
   grep "ENV.*HTTP_PROXY" .ddev/.webimageBuild/Dockerfile
 #  ddev exec curl -I -v https://example.com | grep "Uses proxy env variable http_proxy == '${HTTP_PROXY}'"
   ddev exec "curl -I -v https://example.com |& grep 'Uses proxy env variable'"
@@ -50,14 +51,14 @@ teardown() {
   ddev get rfay/ddev-proxy-support
   ddev debug refresh
   ddev start
-  export HTTP_PROXY=${TESTPROXY}
+  export HTTP_PROXY=${TEST_PROXY_URL}
   export http_proxy=${HTTP_PROXY}
-#  export HTTPS_PROXY=${TESTPROXY}
+#  export HTTPS_PROXY=${TEST_PROXY_URL}
   export NO_PROXY=127.0.0.1
   # Make sure that we can install extra packages using the proxy
   ddev config --webimage-extra-packages=autojump
   ddev start
-  ddev exec "echo \${HTTP_PROXY} | grep ${TESTPROXY}"
+  ddev exec "echo \${HTTP_PROXY} | grep ${TEST_PROXY_URL}"
   grep "ENV.*HTTP_PROXY" .ddev/.webimageBuild/Dockerfile
 #  ddev exec curl -I -v https://example.com | grep "Uses proxy env variable http_proxy == '${HTTP_PROXY}'"
   ddev exec "curl -I -v https://example.com |& grep 'Uses proxy env variable'"

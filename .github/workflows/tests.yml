@@ -19,7 +19,9 @@ defaults:
     shell: bash
 
 env:
-  NIGHTLY_DDEV_PR_URL: "https://nightly.link/drud/ddev/actions/runs/1720215802/ddev-linux-amd64.zip"
+  TEST_PROXY_URL: "http://localhost:8888"
+
+#  NIGHTLY_DDEV_PR_URL: "https://nightly.link/drud/ddev/actions/runs/1720215802/ddev-linux-amd64.zip"
 
 jobs:
   tests:
@@ -37,10 +39,21 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Setup tmate session
+      if: ${{ failure() }}
+      uses: mxschmitt/action-tmate@v3
+      timeout-minutes: 45
+      with:
+        limit-access-to-actor: true
+
     - name: Environment setup
       run: |
-        brew install bats-core mkcert
+        npm install -g bats
+        apt-get update -y >/dev/null && apt-get install -y curl libnss3-tools tinyproxy >/dev/null
+        curl -L -o /usr/local/bin/mkcert https://github.com/FiloSottile/mkcert/releases/download/v1.4.4/mkcert-v1.4.4-linux-amd64 && chmod +x /usr/local/bin/mkcert
         mkcert -install
+        # Tinyproxy will listen by default on all interfaces, port 8888
+        service tinyproxy start
 
     - name: Use ddev stable
       if: matrix.ddev_version == 'stable'

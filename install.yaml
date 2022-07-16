@@ -3,6 +3,11 @@
 name: proxy-support
 
 pre_install_actions:
+  - |
+    #ddev-nodisplay
+    if ! ( ddev debug capabilities 2>/dev/null | grep pre-dockerfile-insertion >/dev/null 2>&1 ) ; then
+      echo "This add-on requires DDEV v1.19.4 or higher, please upgrade." && exit 2
+    fi
 
 project_files:
 - docker-compose.proxy-support.yaml
