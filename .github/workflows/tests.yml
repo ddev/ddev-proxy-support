@@ -39,7 +39,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
+
     - name: tmate debugging session
       uses: mxschmitt/action-tmate@v3
       with:
@@ -49,12 +49,10 @@ jobs:
 
     - name: Environment setup
       run: |
-        npm install -g bats
-        apt-get update -y >/dev/null && apt-get install -y curl libnss3-tools tinyproxy >/dev/null
-        curl -L -o /usr/local/bin/mkcert https://github.com/FiloSottile/mkcert/releases/download/v1.4.4/mkcert-v1.4.4-linux-amd64 && chmod +x /usr/local/bin/mkcert
+        brew install bats-core mkcert
         mkcert -install
         # Tinyproxy will listen by default on all interfaces, port 8888
-        service tinyproxy start
+        sudo service tinyproxy start
 
     - name: Use ddev stable
       if: matrix.ddev_version == 'stable'
