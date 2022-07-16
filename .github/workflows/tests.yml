@@ -44,7 +44,11 @@ jobs:
         mkcert -install
         sudo apt-get update >/dev/null && sudo apt-get install -y curl tinyproxy >/dev/null
         # Tinyproxy will listen by default on all interfaces, port 8888
-        sudo service tinyproxy start
+        echo 'Allow 172.0.0.0/8
+  Allow 192.168.0.0/16
+  Allow 10.0.0.0/8' >> /etc/tinyproxy/tinyproxy.conf
+  `
+        sudo systemctl start tinyproxy
 
     - name: Use ddev stable
       if: matrix.ddev_version == 'stable'
