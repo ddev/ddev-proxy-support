@@ -19,7 +19,7 @@ defaults:
     shell: bash
 
 env:
-  TEST_PROXY_URL: "http://127.0.0.1:8888"
+  TEST_PROXY_URL: "http://$(hostname --ip-address):8888"
   NIGHTLY_DDEV_PR_URL: "https://nightly.link/drud/ddev/actions/runs/2682419555/ddev-linux-amd64.zip"
 
 jobs:
