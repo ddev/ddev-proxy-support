@@ -19,7 +19,6 @@ defaults:
     shell: bash
 
 env:
-  TEST_PROXY_URL: "http://$(hostname --ip-address):8888"
   NIGHTLY_DDEV_PR_URL: "https://nightly.link/drud/ddev/actions/runs/2682419555/ddev-linux-amd64.zip"
 
 jobs:
@@ -79,7 +78,9 @@ jobs:
         docker pull memcached:1.6 >/dev/null
 
     - name: tests
-      run: bats tests
+      run: |
+        export TEST_PROXY_URL="http://$(hostname --ip-address)/:8888"
+        bats tests
 
     # keepalive-workflow adds a dummy commit if there's no other action here, keeps
     # GitHub from turning off tests after 60 days
