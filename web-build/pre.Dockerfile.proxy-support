@@ -10,8 +10,8 @@ ARG http_proxy
 
 ENV HTTP_PROXY=${HTTP_PROXY}
 ENV HTTPS_PROXY=${HTTPS_PROXY}
-ENV NO_PROXY=${NO_PROXY}
-ENV http_proxy=${http_proxy}
+ENV NO_PROXY=${NO_PROXY:-127.0.0.1}
+ENV http_proxy=${http_proxy:-${HTTP_PROXY}}
 
 RUN if [ ! -z "${HTTP_PROXY:-}" ] || [ ! -z "${HTTPS_PROXY:-}" ]; then \
     printf "Acquire {\nHTTP::proxy \"${HTTP_PROXY:-}\";\nHTTPS::proxy \"${HTTPS_PROXY:-}\";\n}\n"  > /etc/apt/apt.conf.d/proxy.conf ; \
