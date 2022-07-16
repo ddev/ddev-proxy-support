@@ -1,7 +1,7 @@
 setup() {
   set -eu -o pipefail
   export DIR="$( cd "$( dirname "$BATS_TEST_FILENAME" )" >/dev/null 2>&1 && pwd )/.."
-  export TESTDIR=~/tmp/testelasticsearch
+  export TESTDIR=~/tmp/testproxysupport
   mkdir -p $TESTDIR
   export PROJNAME=test-addon-template
   export DDEV_NON_INTERACTIVE=true
@@ -24,9 +24,6 @@ teardown() {
   echo "# ddev get ${DIR} with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
   ddev get ${DIR}
   ddev restart
-  # Do something here to verify functioning extra service
-  # For extra credit, use a real CMS with actual config.
-  # ddev exec "curl -s elasticsearch:9200" | grep "${PROJNAME}-elasticsearch"
 }
 
 @test "install from release" {
