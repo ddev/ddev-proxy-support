@@ -26,15 +26,13 @@ teardown() {
 @test "install from directory" {
   set -eu -o pipefail
   cd ${TESTDIR}
-  echo "# ddev get ${DIR} with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
   ddev stop
+  echo "# ddev get ${DIR} with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
   ddev get ${DIR}
   ddev debug refresh
   ddev start
   export HTTP_PROXY=${TEST_PROXY_URL}
-  export http_proxy=${HTTP_PROXY}
 #  export HTTPS_PROXY=${TEST_PROXY_URL}
-#  export NO_PROXY=127.0.0.1
   # Make sure that we can install extra packages using the proxy
   ddev config --webimage-extra-packages=autojump
   ddev start
@@ -47,14 +45,13 @@ teardown() {
 @test "install from release" {
   set -eu -o pipefail
   cd ${TESTDIR} || ( printf "unable to cd to ${TESTDIR}\n" && exit 1 )
+  ddev stop
   echo "# ddev get rfay/ddev-proxy-support with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
   ddev get rfay/ddev-proxy-support
   ddev debug refresh
   ddev start
   export HTTP_PROXY=${TEST_PROXY_URL}
-  export http_proxy=${HTTP_PROXY}
 #  export HTTPS_PROXY=${TEST_PROXY_URL}
-  export NO_PROXY=127.0.0.1
   # Make sure that we can install extra packages using the proxy
   ddev config --webimage-extra-packages=autojump
   ddev start

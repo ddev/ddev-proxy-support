@@ -20,8 +20,7 @@ defaults:
 
 env:
   TEST_PROXY_URL: "http://localhost:8888"
-
-#  NIGHTLY_DDEV_PR_URL: "https://nightly.link/drud/ddev/actions/runs/1720215802/ddev-linux-amd64.zip"
+  NIGHTLY_DDEV_PR_URL: "https://nightly.link/drud/ddev/actions/runs/7371608782/ddev-linux-amd64.zip"
 
 jobs:
   tests:
@@ -31,7 +30,7 @@ jobs:
 
     strategy:
       matrix:
-        ddev_version: [HEAD]
+        ddev_version: [HEAD, PR]
 #        ddev_version: [stable, edge, HEAD, PR]
       fail-fast: false
 
