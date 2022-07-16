@@ -39,12 +39,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup tmate session
-      if: ${{ failure() }}
+    
+    - name: tmate debugging session
       uses: mxschmitt/action-tmate@v3
-      timeout-minutes: 45
       with:
         limit-access-to-actor: true
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+      if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled }}
 
     - name: Environment setup
       run: |
@@ -78,12 +79,6 @@ jobs:
       run: | 
         mkdir junk && pushd junk && ddev config --auto && ddev debug download-images >/dev/null
         docker pull memcached:1.6 >/dev/null
-    - name: tmate debugging session
-      uses: mxschmitt/action-tmate@v3
-      with:
-        limit-access-to-actor: true
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-      if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled }}
 
     - name: tests
       run: bats tests
