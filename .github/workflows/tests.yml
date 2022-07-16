@@ -79,7 +79,7 @@ jobs:
 
     - name: tests
       run: |
-        export TEST_PROXY_URL="http://$(hostname --ip-address)/:8888"
+        export TEST_PROXY_URL="http://$(hostname --ip-address):8888/"
         bats tests
 
     # keepalive-workflow adds a dummy commit if there's no other action here, keeps
