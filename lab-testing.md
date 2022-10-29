@@ -21,7 +21,7 @@ There are 4 basic things that need to work in a behind-proxy ddev environment:
 
 3. Normally, on Windows and macOS, the settings above will be reflected in ~/.docker/config.json, but if not they can be added there as shown in [Docker docs](https://docs.docker.com/network/proxy/). Again, you need to add the HTTP and HTTPS proxyes, and add ``"noProxy": 127.0.0.1,*.ddev.site`.
 
-4. Individual images may need to be set up to make apt work inside them. This is optional, because if you do your apt-get work at container build time (in a .ddev/web-build/Dockerfile) then everything works using the host configuration. See the [example .ddev/web-build/Dockerfile](Dockerfile).
+4. The [pre.Dockerfile.proxy-support](web-build/pre.Dockerfile.proxy-support) provided by this add-on enables apt support of the proxy.
 
 I used Parallels on macOS for the test lab.
 
@@ -35,4 +35,4 @@ I used Parallels on macOS for the test lab.
 * Verified that curl against internet https locations now worked on the "workstation".
 * Configured the docker server as in [docker server instructions](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy), and verified that `docker pull ubuntu` now worked on "workstation" using the proxy.
 * Configured the docker client as in [docker client instructions](https://docs.docker.com/network/proxy/#configure-the-docker-client) and verified that proxy setup was now right in the container by `ddev start`, `ddev ssh`, and using curl inside the container against an HTTPS website.
-* Added the .ddev/web-build/Dockerfile from step 4 into the ddev project on the "workstation" and `ddev start`, then `ddev ssh` and `sudo apt-get update` and saw the update happen successfully, all using the proxy.
+* `ddev get drud/ddev-proxy-support` installs the [pre.Dockerfile.proxy-support](web-build/pre.Dockerfile.proxy-support) which enables apt support of the proxy.
