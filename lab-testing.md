@@ -11,6 +11,6 @@ I used Parallels on macOS for the test lab.
 * Configured the workstation VM with system-wide proxy settings using the regular Ubuntu network setting GUI (in this case HTTP/HTTPS proxies using proxy.host-only:8888).
 * Configured the Firefox browser on "workstation" to use the system-configured proxy and verified that it could now operate.
 * Verified that curl against internet https locations now worked on the "workstation".
-* Configured the docker server as in step 2 above, and verified that `docker pull ubuntu` now worked on "workstation" using the proxy.
-* Configured the docker client as in step 3 above and verified that proxy setup was now right in the container by `ddev start`, `ddev ssh`, and using curl inside the container against an HTTPS website.
+* Configured the docker server as in [docker server instructions](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy), and verified that `docker pull ubuntu` now worked on "workstation" using the proxy.
+* Configured the docker client as in [docker client instructions](https://docs.docker.com/network/proxy/#configure-the-docker-client) and verified that proxy setup was now right in the container by `ddev start`, `ddev ssh`, and using curl inside the container against an HTTPS website.
 * Added the .ddev/web-build/Dockerfile from step 4 into the ddev project on the "workstation" and `ddev start`, then `ddev ssh` and `sudo apt-get update` and saw the update happen successfully, all using the proxy.
