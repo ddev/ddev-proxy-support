@@ -14,9 +14,9 @@ ENV NO_PROXY=${NO_PROXY:-127.0.0.1}
 ENV http_proxy=${http_proxy:-${HTTP_PROXY}}
 
 RUN if [ ! -z "${HTTP_PROXY:-}" ] || [ ! -z "${HTTPS_PROXY:-}" ]; then \
-    printf "Acquire {\nHTTP::proxy \"${HTTP_PROXY:-}\";\nHTTPS::proxy \"${HTTPS_PROXY:-}\";\n}\n"  > /etc/apt/apt.conf.d/proxy.conf ; \
+    printf "Acquire {\nHTTP::proxy \"%s\";\nHTTPS::proxy \"%s\";\n}\n" "${HTTP_PROXY:-}" "${HTTPS_PROXY:-}" > /etc/apt/apt.conf.d/proxy.conf ; \
 fi
 
 # Debugging statements
-RUN echo "Using HTTP_PROXY='${HTTP_PROXY:-}' HTTPS_PROXY='${HTTPS_PROXY:-}' NO_PROXY='${NO_PROXY:-}'"
+RUN printf "Using HTTP_PROXY='%s' HTTPS_PROXY='%s' NO_PROXY='%s'" "${HTTP_PROXY:-}" "${HTTPS_PROXY:-}" "${NO_PROXY:-}"
 RUN if [ -f /etc/apt/apt.conf.d/proxy.conf ]; then cat /etc/apt/apt.conf.d/proxy.conf ; fi
