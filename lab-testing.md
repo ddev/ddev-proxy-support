@@ -19,7 +19,7 @@ There are 4 basic things that need to work in a behind-proxy ddev environment:
     * Secure Web Server (HTTPS) : `http://proxy:8888`
     * Bypass proxy settings for these hosts & domains: `127.0.0.1`
 
-3. Normally, on Windows and macOS, the settings above will be reflected in ~/.docker/config.json, but if not they can be added there as shown in [Docker docs](https://docs.docker.com/network/proxy/). Again, you need to add the HTTP and HTTPS proxyes, and add ``"noProxy": 127.0.0.1,*.ddev.site`.
+3. Normally, on Windows and macOS, the settings above will be reflected in ~/.docker/config.json, but if not they can be added there as shown in [Docker docs](https://docs.docker.com/network/proxy/). Again, you need to add the HTTP and HTTPS proxies, and add `"noProxy": 127.0.0.1,*.ddev.site`.
 
 4. The [pre.Dockerfile.proxy-support](web-build/pre.Dockerfile.proxy-support) provided by this add-on enables apt support of the proxy.
 
