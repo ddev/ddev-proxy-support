@@ -22,7 +22,9 @@ env:
   NIGHTLY_DDEV_PR_URL: "https://nightly.link/drud/ddev/actions/runs/2682419555/ddev-linux-amd64.zip"
   # Allow ddev get to use a github token to prevent rate limiting by tests
   DDEV_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  
+  # Allow `--HEAD` flag when running tests against HEAD
+  HOMEBREW_NO_INSTALL_FROM_API: 1
+
 jobs:
   tests:
     defaults:
