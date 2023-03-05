@@ -1,8 +1,8 @@
-[![tests](https://github.com/drud/ddev-proxy-support/actions/workflows/tests.yml/badge.svg)](https://github.com/drud/ddev-proxy-support/actions/workflows/tests.yml) ![project is maintained](https://img.shields.io/maintenance/yes/2023.svg)
+[![tests](https://github.com/ddev/ddev-proxy-support/actions/workflows/tests.yml/badge.svg)](https://github.com/ddev/ddev-proxy-support/actions/workflows/tests.yml) ![project is maintained](https://img.shields.io/maintenance/yes/2023.svg)
 
 # DDEV Proxy support
 
-Install this with `ddev get drud/ddev-proxy-support`
+Install this with `ddev get ddev/ddev-proxy-support`
 
 It installs a docker-compose.proxy.yaml and pre.Dockerfile.proxy-support which add proxy capabilities to DDEV v1.19.5+
 
@@ -14,6 +14,6 @@ Details about how to lab-test this are in [Lab-testing a proxied environment](la
 
 You can also find public proxies of varying reliability at [spys](https://spys.one/free-proxy-list/US/) and other places, and of course you would never trust them with any traffic, but they're useful for testing.
 
-**Contributed and maintained by [@rfay](https://github.com/rfay) based on the original [ddev-contrib recipe](https://github.com/drud/ddev-contrib/tree/master/recipes/proxy).**
+**Contributed and maintained by [@rfay](https://github.com/rfay) based on the original [ddev-contrib recipe](https://github.com/ddev/ddev-contrib/tree/master/recipes/proxy).**
 
 

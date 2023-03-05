@@ -48,8 +48,8 @@ teardown() {
   set -eu -o pipefail
   cd ${TESTDIR} || ( printf "unable to cd to ${TESTDIR}\n" && exit 1 )
   ddev stop
-  echo "# ddev get drud/ddev-proxy-support with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
-  ddev get drud/ddev-proxy-support
+  echo "# ddev get ddev/ddev-proxy-support with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
+  ddev get ddev/ddev-proxy-support
   ddev debug refresh
   ddev start
   export HTTP_PROXY=${TEST_PROXY_URL}

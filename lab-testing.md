@@ -35,4 +35,4 @@ I used Parallels on macOS for the test lab.
 * Verified that curl against internet https locations now worked on the "workstation".
 * Configured the docker server as in [docker server instructions](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy), and verified that `docker pull ubuntu` now worked on "workstation" using the proxy.
 * Configured the docker client as in [docker client instructions](https://docs.docker.com/network/proxy/#configure-the-docker-client) and verified that proxy setup was now right in the container by `ddev start`, `ddev ssh`, and using curl inside the container against an HTTPS website.
-* `ddev get drud/ddev-proxy-support` installs the [pre.Dockerfile.proxy-support](web-build/pre.Dockerfile.proxy-support) which enables apt support of the proxy.
+* `ddev get ddev/ddev-proxy-support` installs the [pre.Dockerfile.proxy-support](web-build/pre.Dockerfile.proxy-support) which enables apt support of the proxy.
