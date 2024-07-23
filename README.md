@@ -1,6 +1,6 @@
-[![tests](https://github.com/ddev/ddev-proxy-support/actions/workflows/tests.yml/badge.svg)](https://github.com/ddev/ddev-proxy-support/actions/workflows/tests.yml) ![project is maintained](https://img.shields.io/maintenance/yes/2023.svg)
+[![tests](https://github.com/ddev/ddev-proxy-support/actions/workflows/tests.yml/badge.svg)](https://github.com/ddev/ddev-proxy-support/actions/workflows/tests.yml) ![project is maintained](https://img.shields.io/maintenance/yes/2024.svg)
 
-# DDEV Proxy support
+# DDEV Proxy support (Apparently obsolete, see [#5](https://github.com/ddev/ddev-proxy-support/issues/5))
 
 Install this with `ddev get ddev/ddev-proxy-support`
 
