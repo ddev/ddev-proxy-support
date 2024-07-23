@@ -35,6 +35,7 @@ jobs:
     steps:
       - name: Proxy Environment setup
         run: |
+          brew install bats-core mkcert
           mkcert -install
           sudo apt-get update >/dev/null && sudo apt-get install -y curl tinyproxy >/dev/null
           # Tinyproxy will listen by default on all interfaces, port 8888
