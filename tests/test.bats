@@ -6,7 +6,7 @@ setup() {
   # Test proxy will normally come from TEST_PROXY_URL secret in github repo, but defaults to
   # a public proxy listed at https://spys.one/en/free-proxy-list/
   # This may not be reliable.
-  export TEST_PROXY_URL=${TEST_PROXY_URL:-http://67.212.186.101:80}
+  export TEST_PROXY_URL=${TEST_PROXY_URL:-http://93.127.215.97:80}
   echo "# Using TEST_PROXY_URL=${TEST_PROXY_URL}" >&3
 
   mkdir -p $TESTDIR
