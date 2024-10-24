@@ -2,7 +2,17 @@
 
 # DDEV Proxy support (Apparently obsolete, see [#5](https://github.com/ddev/ddev-proxy-support/issues/5))
 
-Install this with `ddev get ddev/ddev-proxy-support`
+To install this, for DDEV v1.23.5 or above run
+
+```sh
+ddev add-on get ddev/ddev-proxy-support
+```
+
+For earlier versions of DDEV run
+
+```sh
+ddev get ddev/ddev-proxy-support
+```
 
 It installs a docker-compose.proxy.yaml and pre.Dockerfile.proxy-support which add proxy capabilities to DDEV v1.19.5+
 
