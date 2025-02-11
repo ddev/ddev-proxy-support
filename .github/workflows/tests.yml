@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
   schedule:
-  - cron: '05 07 * * *'
+  - cron: '25 08 * * *'
 
   workflow_dispatch:
     inputs:
@@ -30,25 +30,9 @@ jobs:
         ddev_version: [stable, HEAD]
       fail-fast: false
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up Homebrew
-        id: set-up-homebrew
-        uses: Homebrew/actions/setup-homebrew@master
-
-      - name: Proxy Environment setup
-        run: |
-          brew install bats-core mkcert
-          mkcert -install
-          sudo apt-get update >/dev/null && sudo apt-get install -y curl tinyproxy >/dev/null
-          # Tinyproxy will listen by default on all interfaces, port 8888
-          printf "Allow 172.0.0.0/8\nAllow 192.168.0.0/16\nAllow 10.0.0.0/8\n" | sudo tee -a /etc/tinyproxy/tinyproxy.conf  
-          sudo systemctl restart tinyproxy
-          echo "TEST_PROXY_URL=http://$(hostname --ip-address):8888" >> $GITHUB_ENV
-
       - uses: ddev/github-action-add-on-test@v2
         with:
           ddev_version: ${{ matrix.ddev_version }}
