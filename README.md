@@ -1,17 +1,11 @@
-[![tests](https://github.com/ddev/ddev-proxy-support/actions/workflows/tests.yml/badge.svg)](https://github.com/ddev/ddev-proxy-support/actions/workflows/tests.yml) ![project is maintained](https://img.shields.io/maintenance/yes/2024.svg)
+[![tests](https://github.com/ddev/ddev-proxy-support/actions/workflows/tests.yml/badge.svg)](https://github.com/ddev/ddev-proxy-support/actions/workflows/tests.yml) ![project is maintained](https://img.shields.io/maintenance/yes/2023.svg)
 
 # DDEV Proxy support (Apparently obsolete, see [#5](https://github.com/ddev/ddev-proxy-support/issues/5))
 
-To install this, for DDEV v1.23.5 or above run
+To install this, install and restart:
 
 ```sh
-ddev add-on get ddev/ddev-proxy-support
-```
-
-For earlier versions of DDEV run
-
-```sh
-ddev get ddev/ddev-proxy-support
+ddev add-on get ddev/ddev-proxy-support && ddev restart
 ```
 
 It installs a docker-compose.proxy.yaml and pre.Dockerfile.proxy-support which add proxy capabilities to DDEV v1.19.5+
