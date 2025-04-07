@@ -1,6 +1,10 @@
 [![tests](https://github.com/ddev/ddev-proxy-support/actions/workflows/tests.yml/badge.svg)](https://github.com/ddev/ddev-proxy-support/actions/workflows/tests.yml) ![project is maintained](https://img.shields.io/maintenance/yes/2023.svg)
 
-# DDEV Proxy support (Apparently obsolete, see [#5](https://github.com/ddev/ddev-proxy-support/issues/5))
+# DDEV Proxy support (Archived, see DDEV Docs)
+
+**This add-on is now archived.**
+
+**Configuring proxy support for DDEV and Docker is not hard, but it does require more than the simple approach shown here. Please see [DDEV Networking](https://ddev.readthedocs.io/en/latest/users/usage/networking/). (You don't really have to do anything for DDEV, but you do have to configure Docker to get everything working.)**
 
 To install this, install and restart:
 
